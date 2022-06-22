@@ -60,12 +60,4 @@ public class HomePage {
         DashboardMenu.click();
         return new DashboardPage(driver);
     }
-
-
-
-    public HomePage assertWelcomeIsShown(){
-        Assert.assertTrue(welcomeElm.isDisplayed(), "Welcome element is not shown.");
-        Assert.assertTrue(welcomeElm.getText().contains("Welcome"), "Welcome element text: '" + welcomeElm.getText() + "' does not contain word 'Welcome'");
-        return this;
-    }
 }

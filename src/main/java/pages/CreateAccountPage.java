@@ -62,24 +62,8 @@ public class CreateAccountPage {
         return new HomePage(driver);
     }
 
-
-
     public CreateAccountPage submitRegisterWithFailure() {
         registerBtn.click();
-        return this;
-    }
-
-    public CreateAccountPage assertLoginErrorIsShown(String errorText) {
-
-        boolean doesErrorExists = false;
-
-        for (WebElement loginError : loginErrors) {
-            if (loginError.getText().equals(errorText)) {
-                doesErrorExists = true;
-                break;
-            }
-        }
-        Assert.assertTrue(doesErrorExists);
         return this;
     }
 

@@ -23,7 +23,6 @@ public class CreateProcessPage extends HomePage {
     @FindBy(css = ".field-validation-error[data-valmsg-for=Name]")
     private WebElement nameError;
 
-
     public CreateProcessPage typeName(String processName) {
         nameTxt.clear();
         nameTxt.sendKeys(processName);
