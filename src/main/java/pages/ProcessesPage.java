@@ -1,33 +1,44 @@
 package pages;
 
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import java.util.List;
+
 public class ProcessesPage extends HomePage {
-    protected WebDriver driver;
+
 
     public ProcessesPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
+    @FindBy(linkText = "Add new process")
+    private WebElement addProcessBtn;
 
     @FindBy(css = ".page-title h3")
-    private WebElement pageHeaderElm;
+    private WebElement pageHeader;
 
-    public ProcessesPage assertProcessesUrl(String expUrl) {
-        Assert.assertEquals(driver.getCurrentUrl(), expUrl);
-        return this;
+
+
+    public CreateProcessPage clickAddProcess() {
+        addProcessBtn.click();
+
+        return new CreateProcessPage(driver);
     }
 
     public ProcessesPage assertProcessesHeader() {
-        Assert.assertTrue(pageHeaderElm.isDisplayed());
-        Assert.assertEquals(pageHeaderElm.getText(), "Processes");
-        return this;
+        Assert.assertEquals(pageHeader.getText(), "Processes");
 
+        return this;
     }
 
+    public ProcessesPage assertProcessesUrl(String pageUrl) {
+        Assert.assertEquals(driver.getCurrentUrl(), pageUrl);
+
+        return this;
+    }
 }
+
