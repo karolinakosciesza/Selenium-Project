@@ -25,6 +25,9 @@ public class CreateAccountPage {
     @FindBy(css = ".validation-summary-errors>ul>li")
     public List<WebElement> registerErrors;
 
+    @FindBy(id = "ConfirmPassword-error")
+    private WebElement confirmationError;
+
     @FindBy(id = "Password")
     private WebElement passwordTxt;
 
@@ -85,4 +88,10 @@ public class CreateAccountPage {
             Assert.assertEquals(getErrorText, errorText);
             return this;
         }
+
+    public CreateAccountPage assertConfirmationErrorIsShown() {
+        Assert.assertTrue(confirmationError.isDisplayed());
+        Assert.assertEquals(confirmationError.getText(), "The password and confirmation password do not match.");
+        return this;
+    }
 }
